@@ -1,29 +1,21 @@
-import json
-
-from django.http import HttpResponse
 from django.shortcuts import render
+from .serializers import *
+from rest_framework import viewsets
+from .models import *
 
-from test_app_1.models import Warehouse
-
-
-def index(request):
-    return render(request, 'test_page.html')
-
-
-def ajax_get_table_data(request):
-    response_dict = []
-    action = request.POST.get('action', '')
+# Create your views here.
+class WarehouseViewSet(viewsets.ModelViewSet):
+    queryset = Warehouse.objects.all()
+    serializer_class = WarehouseSerializer
 
 
-    if action == "dt_sugg_fba_send_ins":
-        warehouses = Warehouse.objects.all()
-        for wh in warehouses:
-            response_dict.append({
-                "warehouse_id": wh.id,
-                "warehouse": wh.warehouse_name,
-                "amazon_de": 0,
-                "amazon_fr": 1,
+class Purchase_OrderViewSet(viewsets.ModelViewSet):
+    queryset = Purchase_Order.objects.all().aggregate()
+    serializer_class = Purchase_OrderSerializer
+    
 
-            })
+class Plain_Carton_Line_ItemViewSet(viewsets.ModelViewSet):
+    queryset = Plain_Carton_Line_Item.objects.all()
+    serializer_class = Plain_Carton_Line_ItemSerializer
 
-    return HttpResponse(json.dumps({"data": response_dict}), content_type='application/json')
+

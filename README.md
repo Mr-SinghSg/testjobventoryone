@@ -38,4 +38,7 @@ Steps to install and run backend on your local machine
 
     7.Open http://127.0.0.1:8000/ in a web browser to view your application.
 
-    8.A url link like "warehouse": "http://127.0.0.1:8000/warehouse/" is apper in your web browser. Output of the given url is given in submission.jpg in below.
+    8.A url link like "warehouse": "http://127.0.0.1:8000/warehouse/" is apper in your web browser. Output of the given url is given below.
+    
+    <img width="739" alt="submission" src="https://user-images.githubusercontent.com/91453456/146524610-9a449c2d-8550-4f67-8153-b0a917340bba.png">
+
